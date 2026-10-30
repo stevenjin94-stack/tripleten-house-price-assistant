@@ -1,0 +1,47 @@
+﻿project:
+  name: tripleten-house-price-assistant
+  random_state: 42
+
+data:
+  raw_path: data/raw/ames_housing.csv
+  target_column: SalePrice
+  test_size: 0.20
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  experiment_name: house-price-model-comparison
+
+training:
+  cross_validation_folds: 5
+  selection_metric: cv_rmse
+
+  models:
+    - name: random_forest_baseline
+      estimator: random_forest
+      n_estimators: 150
+      max_depth: 20
+      min_samples_leaf: 1
+
+    - name: random_forest_regularized
+      estimator: random_forest
+      n_estimators: 200
+      max_depth: 12
+      min_samples_leaf: 2
+
+    - name: extra_trees_baseline
+      estimator: extra_trees
+      n_estimators: 150
+      max_depth: 20
+      min_samples_leaf: 1
+
+    - name: extra_trees_regularized
+      estimator: extra_trees
+      n_estimators: 200
+      max_depth: 12
+      min_samples_leaf: 2
+
+    - name: gradient_boosting_baseline
+      estimator: gradient_boosting
+      n_estimators: 100
+      learning_rate: 0.05
+      max_depth: 3

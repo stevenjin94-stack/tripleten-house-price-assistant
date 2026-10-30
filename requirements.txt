@@ -1,0 +1,10 @@
+pandas==2.3.3
+numpy==2.3.4
+scikit-learn==1.7.2
+mlflow==3.5.1
+SQLAlchemy==2.0.55
+pytest==8.4.2
+PyYAML==6.0.3
+joblib==1.5.2
+python-dotenv==1.2.1
+requests==2.32.5
